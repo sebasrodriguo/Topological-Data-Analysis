@@ -1,0 +1,9 @@
+# Al configurar la compilación nos deshacemos de un gitignore grande.
+archivos_auxiliares/
+archivos_finales/*.gz
+# Por que yo uso https://plugins.jetbrains.com/plugin/9473-texify-idea
+.idea
+
+# Estos son para evitar cualquier archivo dependiente del sistema operativo
+*.bat
+*.sh
