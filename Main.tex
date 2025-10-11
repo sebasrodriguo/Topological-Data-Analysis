@@ -1,9 +1,35 @@
 \documentclass[12pt]{book}
 \usepackage{amsfonts}
+\usepackage{amsmath}      % Para \numberwithin
+\usepackage{amsthm} 
+\usepackage{hyperref}
+\usepackage{url}
+\theoremstyle{plain}
+\numberwithin{equation}{section} %change this to make globally numbered equations
+\newtheorem{thm}{Theorem}[section] %remove [section] to make globally numbered environments
+\usepackage[spanish]{babel}
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{example}[thm]{Example}
+\newtheorem{definition}[thm]{Definición}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{corollary}[thm]{Corollary}
+\begin{document}
 \author{Sebastián Rodríguez Labastida, Álvaro Matanzo Hermoso}
 \title{Análisis Topológico de Datos}
 \date{\today}
-\begin{document}
 \frontmatter
 \maketitle
+
+\begin{definition}
+Un \textit{Grupo}\footnote{Por convención, en este texto todos los grupos serán abelianos.} es un conjunto $A$ junto con una operación $+ \in A \times A$ que satisface que para cualesquiera $a,b,c \in A$ se cumple
+\begin{enumerate}
+	\item $a+b\in A $.
+	\item $a+(b+c) \ =\ (a+b) + c$.
+	\item $a+b \ =\ b+a $.
+	\item Existe $x\in A$ tal que $a+x \ =\ a$.
+	\item Existe $0_A \in A$ que satisface que para toda $\ell \in A$ se cumple que $a+0 \ =\ a$.
+\end{enumerate}
+\end{definition}
+
 \end{document}
