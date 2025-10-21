@@ -14,6 +14,16 @@
 \newtheorem{definition}[thm]{Definición}
 \newtheorem{proposition}[thm]{Proposition}
 \newtheorem{corollary}[thm]{Corollary}
+
+% Enumeración 
+\renewcommand{\thechapter}{\Roman{chapter}}  % Romana para los capítulos
+
+%Las secciones y subsecciones en números arábigos
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 \author{Sebastián Rodríguez Labastida, Álvaro Matanzo Hermoso}
 \title{Análisis Topológico de Datos}
@@ -21,15 +31,17 @@
 \frontmatter
 \maketitle
 
-\begin{definition}
-Un \textit{Grupo}\footnote{Por convención, en este texto todos los grupos serán abelianos.} es un conjunto $A$ junto con una operación $+ \in A \times A$ que satisface que para cualesquiera $a,b,c \in A$ se cumple
+\chapter{Preludio de Algebra}
+\section{Grupos}
+\begin{definition}\label{def:grupo}
+Un \textit{Grupo}\footnote{Por convención, en este texto todos los grupos serán abelianos.} es un conjunto $A$ junto con una operación $+\colon A\times A\rightarrow A$ que satisface que para cualesquiera $a,b,c \in A$ se cumple
 \begin{enumerate}
-	\item $a+b\in A $.
-	\item $a+(b+c) \ =\ (a+b) + c$.
+	\item $a+(b+c) \ =\ (a+b)+c$.
 	\item $a+b \ =\ b+a $.
-	\item Existe $x\in A$ tal que $a+x \ =\ a$.
-	\item Existe $0_A \in A$ que satisface que para toda $\ell \in A$ se cumple que $a+0 \ =\ a$.
+	\item Existe $0_A \in A$ que satisface que para toda $z\in A$ se cumple que $z+0_A \ =\ a$.
+	\item Existe $x\in A$ tal que $a+x \ =\ 0_A$.
 \end{enumerate}
+Cuando no exista ambiguedad usaremos el símbolo $0$ sin mencionar a que grupo pertenece.
 \end{definition}
 
 \end{document}
