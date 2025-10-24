@@ -44,4 +44,78 @@ Un \textit{Grupo}\footnote{Por convención, en este texto todos los grupos será
 Cuando no exista ambiguedad usaremos el símbolo $0$ sin mencionar a que grupo pertenece.
 \end{definition}
 
+% ============================================================
+% Definiciones para issue #17: grupo abeliano libre, tensor y Tor
+% Basadas en Fuchs, Abelian Groups (Springer, 2015)
+% ============================================================
+
+\begin{definition}\label{def:free-abelian-group}
+Un \textit{grupo abeliano libre} es una suma directa de grupos cíclicos infinitos.
+Si estos grupos cíclicos son generados por elementos $x_i$ $(i \in I)$, entonces
+el grupo libre será
+\[
+F = \bigoplus_{i \in I} \langle x_i \rangle.
+\]
+El conjunto $\{x_i\}_{i \in I}$ es una base de $F$. Los elementos de $F$ son
+combinaciones lineales finitas
+\[
+g = n_1x_{i_1} + \cdots + n_kx_{i_k}, \quad n_j \in \mathbb{Z},
+\]
+con coeficientes enteros distintos de cero. Dos combinaciones representan el
+mismo elemento de $F$ si y solo si difieren en el orden de los términos.
+La suma se define añadiendo los coeficientes de los mismos generadores.
+En particular, $F$ está determinado, salvo isomorfismo, por el número cardinal
+de sus generadores, al cual se llama el \textit{rango} del grupo libre.
+\end{definition}
+
+\begin{definition}\label{def:tensor-product}
+Sean $A$ y $C$ grupos abelianos. Sea $X$ el grupo libre sobre el conjunto
+$A \times C$, cuyos generadores se denotan $(a,c)$ con $a \in A$ y $c \in C$.
+Sea $Y$ el subgrupo de $X$ generado por todos los elementos de la forma
+\[
+(a_1 + a_2, c) - (a_1, c) - (a_2, c), \quad
+(a, c_1 + c_2) - (a, c_1) - (a, c_2),
+\]
+para todo $a,a_1,a_2 \in A$ y $c,c_1,c_2 \in C$. El \textit{producto tensorial}
+de $A$ y $C$ se define como el cociente
+\[
+A \otimes C = X / Y.
+\]
+Si denotamos por $a \otimes c$ la clase del generador $(a,c)$, los elementos de
+$A \otimes C$ son combinaciones lineales finitas de tales tensores, sujetas a
+las relaciones
+\[
+(a_1 + a_2) \otimes c = a_1 \otimes c + a_2 \otimes c, \qquad
+a \otimes (c_1 + c_2) = a \otimes c_1 + a \otimes c_2.
+\]
+El grupo $A \otimes C$ cumple la \textit{propiedad universal}: para toda
+aplicación bilineal $g : A \times C \to G$, con $G$ abeliano, existe un único
+homomorfismo $\overline{g} : A \otimes C \to G$ tal que
+$\overline{g}(a \otimes c) = g(a,c)$. Esta propiedad caracteriza a
+$A \otimes C$ de manera única, salvo isomorfismo.
+\end{definition}
+
+\begin{definition}\label{def:tor}
+El \textit{producto de torsión} de dos grupos abelianos $A$ y $C$ se denota
+$\mathrm{Tor}(A,C)$. Se define como el grupo generado por los símbolos
+$(a,m,c)$ con $a \in A$, $c \in C$ y $m \in \mathbb{N}$ tales que $ma = 0 = mc$,
+sujetos a las relaciones
+\[
+\begin{aligned}
+(a_1 + a_2, m, c) &= (a_1, m, c) + (a_2, m, c),\\
+(a, m, c_1 + c_2) &= (a, m, c_1) + (a, m, c_2),\\
+(a, mn, c) &= (na, m, c) = (a, m, nc).
+\end{aligned}
+\]
+Con estas relaciones, el grupo $\mathrm{Tor}(A,C)$ es abeliano y satisface una
+\textit{simetría natural}:
+\[
+\mathrm{Tor}(A,C) \cong \mathrm{Tor}(C,A).
+\]
+El producto de torsión es, por construcción, functorial en ambos argumentos y
+mide el ``defecto de exactitud a la izquierda'' del producto tensorial.
+\end{definition}
+
+% ============================================================
+
 \end{document}
