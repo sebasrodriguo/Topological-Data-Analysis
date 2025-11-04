@@ -54,14 +54,14 @@ Un \textit{grupo abeliano libre} es una suma directa de grupos cíclicos infinit
 Si estos grupos cíclicos son generados por elementos $x_i$ $(i \in I)$, entonces
 el grupo libre será
 \[
-F = \bigoplus_{i \in I} \langle x_i \rangle.
+F  \ = \  \bigoplus_{i \in I} \langle x_i \rangle.
 \]
 El conjunto $\{x_i\}_{i \in I}$ es una base de $F$. Los elementos de $F$ son
 combinaciones lineales finitas de la forma
 \[
 g \ =\ n_1x_{i_1} + \cdots + n_kx_{i_k}, \quad \text{con } n_j \in \mathbb{Z},
 \]
-con coeficientes enteros distintos de cero. Dos combinaciones representan el
+Dos combinaciones representan el
 mismo elemento de $F$ si y solo si difieren en el orden de los términos.
 La suma se define añadiendo los coeficientes de los mismos generadores.
 En particular, $F$ está determinado, salvo isomorfismos, por la cardinalidad
@@ -100,20 +100,16 @@ El \textit{producto de torsión} de dos grupos abelianos $A$ y $C$, denotado por
 $\mathrm{Tor}(A,C)$, se define como el grupo abeliano libre generado por las tercias
 $(a,m,c)$ con $a \in A$, $c \in C$ y $m \in \mathbb{N}$ tales que $ma = 0 = mc$,
 sujetos a las relaciones
-\[
-\begin{aligned*}
+\begin{align*}
 (a_1 + a_2, m, c) &= (a_1, m, c) + (a_2, m, c),\\
 (a, m, c_1 + c_2) &= (a, m, c_1) + (a, m, c_2),\\
 (a, mn, c) &= (na, m, c) = (a, m, nc).
-\end{aligned*}
-\]
+\end{align*}
 Con estas relaciones, el grupo $\mathrm{Tor}(A,C)$ es abeliano y satisface una
 \textit{simetría natural}:
 \[
 \mathrm{Tor}(A,C) \cong \mathrm{Tor}(C,A).
 \]
-El producto de torsión es, por construcción, functorial en ambos argumentos y
-mide el ``defecto de exactitud a la izquierda'' del producto tensorial.
 \end{definition}
 
 % ============================================================
