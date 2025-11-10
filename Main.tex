@@ -44,6 +44,30 @@ Un \textit{Grupo}\footnote{Por convención, en este texto todos los grupos será
 Cuando no exista ambiguedad usaremos el símbolo $0$ sin mencionar a que grupo pertenece.
 \end{definition}
 
+\begin{definition}
+Sean $\{B_i\}_{i \in I}$ grupos abelianos. Se llama \emph{suma directa} de los grupos $B_i$ al subgrupo del producto directo
+\[
+\bigoplus_{i \in I} B_i 
+= 
+\left\{
+(b_i)_{i \in I} \in \prod_{i \in I} B_i 
+\;\middle|\;
+b_i = 0 \text{ salvo para un número finito de índices } i
+\right\},
+\]
+donde la operación de grupo está dada componente a componente.
+
+A los homomorfismos de inclusión
+\[
+\rho_i : B_i \longrightarrow \bigoplus_{i \in I} B_i,
+\qquad
+b_i \longmapsto (\ldots,0,b_i,0,\ldots),
+\]
+se les llama \emph{inyecciones coordenadas}. 
+
+El grupo $\bigoplus_{i \in I} B_i$ se denomina también \emph{suma directa externa} de los $B_i$ y puede verse como el subgrupo del producto directo formado por los elementos con soporte finito.
+\end{definition}
+
 % ============================================================
 % Definiciones para issue #17: grupo abeliano libre, tensor y Tor
 % Basadas en Fuchs, Abelian Groups (Springer, 2015)
