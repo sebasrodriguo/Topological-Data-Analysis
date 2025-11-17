@@ -121,7 +121,7 @@ Con estas relaciones, el grupo $\mathrm{Tor}(A,C)$ es abeliano y satisface una
 \chapter{Complejos}
 \section{Complejos de Cadenas}
 \begin{definition}[Complejo de Cadenas]\label{def:CC}
-Un \deftext{complejo de cadenas} es una familia $\mathcal{K} :=\{ (K_n, \partial_n) : n\in \mathbb{Z}\}$ tal que para toda $n \in \mathbb{Z}$ se satisfacen las siguientes condiciones
+Un \deftext{complejo de cadenas} es una familia $\mathcal{K} :=\{ (K_n, \partial_n) \colon n\in \mathbb{Z}\}$ tal que para toda $n \in \mathbb{Z}$ se satisfacen las siguientes condiciones
 \begin{enumerate}
 	\item $K_n$ es un grupo abeliano;
 	\item $\partial_n \colon K_{n+1} \to K_n$ es morfismo de grupos abelianos; y
@@ -129,7 +129,7 @@ Un \deftext{complejo de cadenas} es una familia $\mathcal{K} :=\{ (K_n, \partial
 \end{enumerate}
 \end{definition}
 \begin{remark}
-La ecuación última ecuación es equivalente a decir que para toda $n\in \mathbb{Z}$ se cumple que
+La ecuación última es equivalente a decir que para toda $n\in \mathbb{Z}$ se cumple que
 \begin{align*}
 	\operatorname{im}(\partial_{n+1} ) \leq \ker(\partial_n).
 \end{align*}
@@ -150,7 +150,7 @@ Dados dos complejos de cadenas $\mathcal{K}$ y $\mathcal{K}'$ un \deftext{morfis
 \begin{enumerate}
 	\item El morfismo trivial de grupos\footnote{Aquí nos referimos al morfismo que manda todo elemento de un grupo al $0$ de otro.} abelianos induce de manera natural un morfismo de cadenas.
 	\item Existe $1_\mathcal{K}:\mathcal{K}\to \mathcal{K}$, con $1_{\mathcal{K}_n} = \text{Id}_{K_n}$ la identidad.
-	\item S $\mathcal{K}$, $\mathcal{J}$ y $\mathcal{L}$ son complejos de cadenas y $f\colon \mathcal{K}\to \mathcal{J}$ y $g \colon \mathcal{J}\to \mathcal{L}$ son morfismos de cadenas, entonces la familia de morfismos $\{ g_n \circ f_n : n\in \mathbb{Z} \}$ es el morfismo de cadenas $g\circ f \colon \mathcal{K}\to \mathcal{L}$.
+	\item S $\mathcal{K}$, $\mathcal{J}$ y $\mathcal{L}$ son complejos de cadenas y $f\colon \mathcal{K}\to \mathcal{J}$ y $g \colon \mathcal{J}\to \mathcal{L}$ son morfismos de cadenas, entonces la familia de morfismos $\{ g_n \circ f_n \mid n\in \mathbb{Z} \}$ es el morfismo de cadenas $g\circ f \colon \mathcal{K}\to \mathcal{L}$.
 \end{enumerate}
 2 y 3 en suma nos dicen que existe la categoría de complejos de cadenas. 
 \end{proposition}
