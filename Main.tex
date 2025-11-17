@@ -45,6 +45,40 @@ Cuando no exista ambiguedad usaremos el símbolo $0$ sin mencionar a que grupo p
 \end{definition}
 
 \begin{definition}
+Sea $\{B_i\}_{i\in I}$ una familia de grupos. Un \emph{vector}
+\[
+(\ldots, b_i, \ldots)
+\]
+es una familia que asigna a cada índice $i \in I$ un elemento $b_i \in B_i$.
+También puede verse como una función
+\[
+f : I \longrightarrow \bigcup_{i\in I} B_i
+\]
+tal que
+\[
+f(i) = b_i \in B_i \quad \text{para cada } i\in I.
+\]
+
+La igualdad y la suma de vectores se definen \emph{coordenada a coordenada}:
+\[
+(b_i)_{i\in I} = (b_i')_{i\in I}
+\quad\Longleftrightarrow\quad
+b_i = b_i' \ \text{para todo } i\in I,
+\]
+\[
+(b_i)_{i\in I} + (b_i')_{i\in I}
+= (\,b_i + b_i'\,)_{i\in I}.
+\]
+
+El conjunto de todos estos vectores, con la operación descrita, forma un grupo que se denota por
+\[
+C = \prod_{i\in I} B_i,
+\]
+y se llama el \emph{producto directo} o \emph{producto cartesiano} de los grupos $B_i$.
+\end{definition}
+
+
+\begin{definition}
 Sean $\{B_i\}_{i \in I}$ grupos abelianos. Se llama \emph{suma directa} de los grupos $B_i$ al subgrupo del producto directo
 \[
 \bigoplus_{i \in I} B_i 
