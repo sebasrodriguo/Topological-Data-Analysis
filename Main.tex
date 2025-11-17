@@ -23,7 +23,6 @@
 %Las secciones y subsecciones en números arábigos
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
-
 % Comandos útiles
 \newcommand{\deftext}[1]{\textbf{\textit{#1}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -39,7 +38,7 @@
 \chapter{Preludio de Algebra}
 \section{Grupos}
 \begin{definition}\label{def:grupo}
-Un \textit{Grupo}\footnote{Por convención, en este texto todos los grupos serán abelianos.} es un conjunto $A$ junto con una operación $+\colon A\times A\rightarrow A$ que satisface que para cualesquiera $a,b,c \in A$ se cumple
+Un \deftext{grupo}\footnote{Por convención, en este texto todos los grupos serán abelianos.} es un conjunto $A$ junto con una operación $+\colon A\times A\rightarrow A$ que satisface que para cualesquiera $a,b,c \in A$ se cumple
 \begin{enumerate}
 	\item $a+(b+c) \ =\ (a+b)+c$.
 	\item $a+b \ =\ b+a $.
@@ -55,13 +54,13 @@ Cuando no exista ambiguedad usaremos el símbolo $0$ sin mencionar a que grupo p
 % ============================================================
 
 \begin{definition}\label{def:free-abelian-group}
-Un \textit{grupo abeliano libre} es una suma directa de grupos cíclicos infinitos.
+Un \deftext{grupo abeliano libre} es una suma directa de grupos cíclicos infinitos.
 Si estos grupos cíclicos son generados por elementos $x_i$ $(i \in I)$, entonces
 el grupo libre será
 \[
 F  \ = \  \bigoplus_{i \in I} \langle x_i \rangle.
 \]
-El conjunto $\{x_i\}_{i \in I}$ es una base de $F$. Los elementos de $F$ son
+El conjunto $\{x_i\}_{i \in I}$ es una \textit{base} de $F$. Los elementos de $F$ son
 combinaciones lineales finitas de la forma
 \[
 g \ =\ n_1x_{i_1} + \cdots + n_kx_{i_k}, \quad \text{con } n_j \in \mathbb{Z},
@@ -86,7 +85,7 @@ de $A$ y $C$ se define como el cociente
 \[
 A \otimes C \ =\ X / Y.
 \]
-Dado $(a,c) \in A \times C$ definimos el tensor de $a$ con $c$, $a \otimes c$, como la clase del generador $(a,c)$; entonces los elementos de
+Dado $(a,c) \in A \times C$ definimos el \textit{tensor} de $a$ con $c$, $a \otimes c$, como la clase del generador $(a,c)$; entonces los elementos de
 $A \otimes C$ son combinaciones lineales finitas de tales tensores, sujetas a
 las relaciones
 \[
@@ -101,7 +100,7 @@ $A \otimes C$ de manera única, salvo isomorfismos.
 \end{definition}
 
 \begin{definition}\label{def:tor}
-El \textit{producto de torsión} de dos grupos abelianos $A$ y $C$, denotado por
+El \deftext{producto de torsión} de dos grupos abelianos $A$ y $C$, denotado por
 $\mathrm{Tor}(A,C)$, se define como el grupo abeliano libre generado por las tercias
 $(a,m,c)$ con $a \in A$, $c \in C$ y $m \in \mathbb{N}$ tales que $ma = 0 = mc$,
 sujetos a las relaciones
@@ -119,7 +118,8 @@ Con estas relaciones, el grupo $\mathrm{Tor}(A,C)$ es abeliano y satisface una
 
 % ============================================================
 
-\chapter{Complejos de Cadenas}
+\chapter{Complejos}
+\section{Complejos de Cadenas}
 \begin{definition}[Complejo de Cadenas]\label{def:CC}
 Un \deftext{complejo de cadenas} es una familia $\mathcal{K} :=\{ (K_n, \partial_n) : n\in \mathbb{Z}\}$ tal que para toda $n \in \mathbb{Z}$ se satisfacen las siguientes condiciones
 \begin{enumerate}
@@ -155,7 +155,7 @@ Dados dos complejos de cadenas $\mathcal{K}$ y $\mathcal{K}'$ un \deftext{morfis
 2 y 3 en suma nos dicen que existe la categoría de complejos de cadenas. 
 \end{proposition}
 \begin{proposition}
-Dados dos complejos de cadenas $\mathcal{K}$ y $\mathcal{L}$ y un morfismo de cadenas $f:\mathcal{K} \to \mathcal{L}$, se tiene que la familia de morfismos $A$, $\{H_n(f) : n\in \mathbb{Z} \}$ donde el morfismo $H_n(f):H_n(\mathcal{K})\to H_n(\mathcal{L})$ está dado por
+Dados dos complejos de cadenas $\mathcal{K}$ y $\mathcal{L}$ y un morfismo de cadenas $f:\mathcal{K} \to \mathcal{L}$, se tiene que la familia de morfismos $A$, $\{H_n(f) : n\in \mathbb{Z} \}$ donde el morfismo $H_n(f):H_n(\mathcal{K})\ \to H_n(\mathcal{L})$ está dado por
 \begin{center}
 $H_n(f)(c + \operatorname{im}\partial_{n+1}) = f(c) + \operatorname{im}\partial_{n+1}$,
 \end{center}
