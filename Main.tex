@@ -153,6 +153,29 @@ $\overline{g}(a \otimes c) = g(a,c)$. Esta propiedad caracteriza a
 $A \otimes C$ de manera única, salvo isomorfismos.
 \end{definition}
 
+\begin{definition}
+La parte de torsión de un grupo $A$ es
+\[
+t(A) := \{\, x \in A \mid nx = 0 \text{ para algún } n \in \mathbb{N} \,\}.
+\]
+Si $t(A)=A$, decimos que $A$ es de torsión.
+En este caso,
+\[
+A = \bigoplus_{p} A_p.
+\]
+\end{definition}
+
+\begin{theorem}[Teorema fundamental de los grupos finitamente generados]
+Todo grupo $G$ tal que existe  $X \in [G]^{<\omega}$ con 
+$\langle X \rangle = G$ es isomorfo a la suma directa de un grupo libre finitamente 
+generado y un número finito de grupos cíclicos de orden $p^{k}$, con $p$ primo 
+y $k \ge 1$. Esta descomposición es única salvo isomorfismos. En particular,
+\[
+G = F(G) \oplus t(G),
+\]
+donde $F(G)$ es la parte libre de $G$ y $t(G)$ es su parte de torsión.
+\end{theorem}
+
 \begin{definition}\label{def:tor}
 El \textit{producto de torsión} de dos grupos abelianos $A$ y $C$, denotado por
 $\mathrm{Tor}(A,C)$, se define como el grupo abeliano libre generado por las tercias
@@ -169,6 +192,22 @@ Con estas relaciones, el grupo $\mathrm{Tor}(A,C)$ es abeliano y satisface una
 \mathrm{Tor}(A,C) \cong \mathrm{Tor}(C,A).
 \]
 \end{definition}
+
+\begin{proposition}
+Sea $\mathcal{G}$ una familia de grupos abelianos. Entonces,
+\[
+\mathrm{Tor}\!\left( \bigoplus_{G \in \mathcal{G}} G,\; C \right)
+\;\cong\;
+\bigoplus_{G \in \mathcal{G}} \mathrm{Tor}(G, C).
+\]
+\end{proposition}
+
+\begin{proposition}
+Si $A$ y $C$ son finitos, entonces
+\[
+A \otimes C \;\cong\; \mathrm{Tor}(A, C).
+\]
+\end{proposition}
 
 % ============================================================
 
