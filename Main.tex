@@ -166,7 +166,7 @@ A = \bigoplus_{p} A_p.
 \end{definition}
 
 \begin{theorem}[Teorema fundamental de los grupos finitamente generados]
-Todo grupo $G$ tal que existe  $X \in [G]^{<\omega}\footnote{En general, si $A$ es un conjunto, entonces $[A]^{<\omega}$ representa la colección de todos los subconjuntos finitos de $A$. } con
+Todo grupo $G$ tal que existe  $X \in [G]^{<\omega}$\footnote{En general, si $A$ es un conjunto, entonces $[A]^{<\omega}$ representa la colección de todos los subconjuntos finitos de $A$. } con
 $\langle X \rangle = G$ es isomorfo a la suma directa de un grupo libre finitamente 
 generado y un número finito de grupos cíclicos de orden $p^{k}$, con $p$ primo 
 y $k \ge 1$. Esta descomposición es única salvo isomorfismos. En particular,
@@ -178,7 +178,7 @@ donde $F(G)$ es la parte libre de $G$ y $t(G)$ es su parte de torsión.
 
 \begin{definition}\label{def:tor}
 El \textit{producto de torsión} de dos grupos abelianos $A$ y $C$, denotado por
-$\mathrm{Tor}(A,C)$, se define como el grupo abeliano libre generado por las tercias
+$\operatorname{Tor}(A,C)$, se define como el grupo abeliano libre generado por las tercias
 $(a,m,c)$ con $a \in A$, $c \in C$ y $m \in \mathbb{N}$ tales que $ma = 0 = mc$,
 sujetos a las relaciones
 \begin{align*}
@@ -186,26 +186,26 @@ sujetos a las relaciones
 (a, m, c_1 + c_2) &= (a, m, c_1) + (a, m, c_2),\\
 (a, mn, c) &= (na, m, c) = (a, m, nc).
 \end{align*}
-Con estas relaciones, el grupo $\mathrm{Tor}(A,C)$ es abeliano y satisface una
-\textit{simetría natural}:
+Con estas relaciones, el grupo $\operatorname{Tor}(A,C)$ es abeliano y satisface una
+\textit{simetría natural}
 \[
-\mathrm{Tor}(A,C) \cong \mathrm{Tor}(C,A).
+\operatorname{Tor}(A,C) \cong \operatorname{Tor}(C,A).
 \]
 \end{definition}
 
 \begin{proposition}
 Sea $\mathcal{G}$ una familia de grupos abelianos. Entonces,
 \[
-\mathrm{Tor}\!\left( \bigoplus_{G \in \mathcal{G}} G,\; C \right)
+\operatorname{Tor}\!\left( \bigoplus_{G \in \mathcal{G}} G,\; C \right)
 \;\cong\;
-\bigoplus_{G \in \mathcal{G}} \mathrm{Tor}(G, C).
+\bigoplus_{G \in \mathcal{G}} \operatorname{Tor}(G, C).
 \]
 \end{proposition}
 
 \begin{proposition}
 Si $A$ y $C$ son finitos, entonces
 \[
-A \otimes C \;\cong\; \mathrm{Tor}(A, C).
+A \otimes C \;\cong\; \operatorname{Tor}(A, C).
 \]
 \end{proposition}
 
