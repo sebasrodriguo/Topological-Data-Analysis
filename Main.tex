@@ -12,8 +12,10 @@
 \newtheorem{lemma}[thm]{Lemma}
 \newtheorem{example}[thm]{Example}
 \newtheorem{definition}[thm]{Definición}
-\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{proposition}[thm]{Proposicion}
 \newtheorem{corollary}[thm]{Corollary}
+\newtheorem{remark}[thm]{Observación}
+
 
 % Enumeración 
 \renewcommand{\thechapter}{\Roman{chapter}}  % Romana para los capítulos
@@ -21,7 +23,8 @@
 %Las secciones y subsecciones en números arábigos
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
-
+% Comandos útiles
+\newcommand{\deftext}[1]{\textbf{\textit{#1}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -30,11 +33,12 @@
 \date{\today}
 \frontmatter
 \maketitle
-
+\tableofcontents
+\mainmatter
 \chapter{Preludio de Algebra}
 \section{Grupos}
 \begin{definition}\label{def:grupo}
-Un \textit{Grupo}\footnote{Por convención, en este texto todos los grupos serán abelianos.} es un conjunto $A$ junto con una operación $+\colon A\times A\rightarrow A$ que satisface que para cualesquiera $a,b,c \in A$ se cumple
+Un \deftext{grupo}\footnote{Por convención, en este texto todos los grupos serán abelianos.} es un conjunto $A$ junto con una operación $+\colon A\times A\rightarrow A$ que satisface que para cualesquiera $a,b,c \in A$ se cumple
 \begin{enumerate}
 	\item $a+(b+c) \ =\ (a+b)+c$.
 	\item $a+b \ =\ b+a $.
@@ -44,19 +48,77 @@ Un \textit{Grupo}\footnote{Por convención, en este texto todos los grupos será
 Cuando no exista ambiguedad usaremos el símbolo $0$ sin mencionar a que grupo pertenece.
 \end{definition}
 
+\begin{definition}
+Sea $\{B_i\}_{i\in I}$ una familia de grupos. Un \emph{vector}
+\[
+(\ldots, b_i, \ldots)
+\]
+es una familia que asigna a cada índice $i \in I$ un elemento $b_i \in B_i$.
+También puede verse como una función
+\[
+f : I \longrightarrow \bigcup_{i\in I} B_i
+\]
+tal que
+\[
+f(i) = b_i \in B_i \quad \text{para cada } i\in I.
+\]
+
+La igualdad y la suma de vectores se definen \emph{coordenada a coordenada}:
+\[
+(b_i)_{i\in I} = (b_i')_{i\in I}
+\quad\Longleftrightarrow\quad
+b_i = b_i' \ \text{para todo } i\in I,
+\]
+\[
+(b_i)_{i\in I} + (b_i')_{i\in I}
+= (\,b_i + b_i'\,)_{i\in I}.
+\]
+
+El conjunto de todos estos vectores, con la operación descrita, forma un grupo que se denota por
+\[
+C = \prod_{i\in I} B_i,
+\]
+y se llama el \emph{producto directo} o \emph{producto cartesiano} de los grupos $B_i$.
+\end{definition}
+
+
+\begin{definition}
+Sean $\{B_i\}_{i \in I}$ grupos abelianos. Se llama \emph{suma directa} de los grupos $B_i$ al subgrupo del producto directo
+\[
+\bigoplus_{i \in I} B_i 
+= 
+\left\{
+(b_i)_{i \in I} \in \prod_{i \in I} B_i 
+\;\middle|\;
+b_i = 0 \text{ salvo para un número finito de índices } i
+\right\},
+\]
+donde la operación de grupo está dada componente a componente.
+
+A los homomorfismos de inclusión
+\[
+\rho_i : B_i \longrightarrow \bigoplus_{i \in I} B_i,
+\qquad
+b_i \longmapsto (\ldots,0,b_i,0,\ldots),
+\]
+se les llama \emph{inyecciones coordenadas}. 
+
+El grupo $\bigoplus_{i \in I} B_i$ se denomina también \emph{suma directa externa} de los $B_i$ y puede verse como el subgrupo del producto directo formado por los elementos con soporte finito.
+\end{definition}
+
 % ============================================================
 % Definiciones para issue #17: grupo abeliano libre, tensor y Tor
 % Basadas en Fuchs, Abelian Groups (Springer, 2015)
 % ============================================================
 
 \begin{definition}\label{def:free-abelian-group}
-Un \textit{grupo abeliano libre} es una suma directa de grupos cíclicos infinitos.
+Un \deftext{grupo abeliano libre} es una suma directa de grupos cíclicos infinitos.
 Si estos grupos cíclicos son generados por elementos $x_i$ $(i \in I)$, entonces
 el grupo libre será
 \[
 F  \ = \  \bigoplus_{i \in I} \langle x_i \rangle.
 \]
-El conjunto $\{x_i\}_{i \in I}$ es una base de $F$. Los elementos de $F$ son
+El conjunto $\{x_i\}_{i \in I}$ es una \textit{base} de $F$. Los elementos de $F$ son
 combinaciones lineales finitas de la forma
 \[
 g \ =\ n_1x_{i_1} + \cdots + n_kx_{i_k}, \quad \text{con } n_j \in \mathbb{Z},
@@ -95,7 +157,7 @@ de $A$ y $C$ se define como el cociente
 \[
 A \otimes C \ =\ X / Y.
 \]
-Dado $(a,c) \in A \times C$ definimos el tensor de $a$ con $c$, $a \otimes c$, como la clase del generador $(a,c)$; entonces los elementos de
+Dado $(a,c) \in A \times C$ definimos el \textit{tensor} de $a$ con $c$, $a \otimes c$, como la clase del generador $(a,c)$; entonces los elementos de
 $A \otimes C$ son combinaciones lineales finitas de tales tensores, sujetas a
 las relaciones
 \[
@@ -109,8 +171,31 @@ $\overline{g}(a \otimes c) = g(a,c)$. Esta propiedad caracteriza a
 $A \otimes C$ de manera única, salvo isomorfismos.
 \end{definition}
 
+\begin{definition}
+La parte de torsión de un grupo $A$ es
+\[
+t(A) := \{\, x \in A \mid nx = 0 \text{ para algún } n \in \mathbb{N} \,\}.
+\]
+Si $t(A)=A$, decimos que $A$ es de torsión.
+En este caso,
+\[
+A = \bigoplus_{p} A_p.
+\]
+\end{definition}
+
+\begin{theorem}[Teorema fundamental de los grupos finitamente generados]
+Todo grupo $G$ tal que existe  $X \in [G]^{<\omega}$\footnote{En general, si $A$ es un conjunto, entonces $[A]^{<\omega}$ representa la colección de todos los subconjuntos finitos de $A$. } con
+$\langle X \rangle = G$ es isomorfo a la suma directa de un grupo libre finitamente 
+generado y un número finito de grupos cíclicos de orden $p^{k}$, con $p$ primo 
+y $k \ge 1$. Esta descomposición es única salvo isomorfismos. En particular,
+\[
+G = F(G) \oplus t(G),
+\]
+donde $F(G)$ es la parte libre de $G$ y $t(G)$ es su parte de torsión.
+\end{theorem}
+
 \begin{definition}\label{def:tor}
-El \textit{producto de torsión} de dos grupos abelianos $A$ y $C$, denotado por
+El \deftext{producto de torsión} de dos grupos abelianos $A$ y $C$, denotado por
 $\mathrm{Tor}(A,C)$, se define como el grupo abeliano libre generado por las tercias
 $(a,m,c)$ con $a \in A$, $c \in C$ y $m \in \mathbb{N}$ tales que $ma = 0 = mc$,
 sujetos a las relaciones
@@ -119,13 +204,81 @@ sujetos a las relaciones
 (a, m, c_1 + c_2) &= (a, m, c_1) + (a, m, c_2),\\
 (a, mn, c) &= (na, m, c) = (a, m, nc).
 \end{align*}
-Con estas relaciones, el grupo $\mathrm{Tor}(A,C)$ es abeliano y satisface una
-\textit{simetría natural}:
+Con estas relaciones, el grupo $\operatorname{Tor}(A,C)$ es abeliano y satisface una
+\textit{simetría natural}
 \[
-\mathrm{Tor}(A,C) \cong \mathrm{Tor}(C,A).
+\operatorname{Tor}(A,C) \cong \operatorname{Tor}(C,A).
 \]
 \end{definition}
 
+\begin{proposition}
+Sea $\mathcal{G}$ una familia de grupos abelianos. Entonces,
+\[
+\left(\bigoplus_{G\in\mathcal{G}} G\right) \otimes C 
+\;\cong\;
+\bigoplus_{G\in\mathcal{G}} (G \otimes C).
+\]
+\end{proposition}
+
+
+\begin{proposition}
+Si $A$ y $C$ son finitos, entonces
+\[
+A \otimes C \;\cong\; \operatorname{Tor}(A, C),
+\]
+y ambos funtores son conmutativos; es decir,
+\[
+A \otimes C \cong C \otimes A 
+\quad\text{y}\quad 
+\operatorname{Tor}(A,C) \cong \operatorname{Tor}(C,A).
+\]
+\end{proposition}
+
+
 % ============================================================
+
+\chapter{Complejos}
+\section{Complejos de Cadenas}
+\begin{definition}[Complejo de Cadenas]\label{def:CC}
+Un \deftext{complejo de cadenas} es una familia $\mathcal{K} :=\{ (K_n, \partial_n) \colon n\in \mathbb{Z}\}$ tal que para toda $n \in \mathbb{Z}$ se satisfacen las siguientes condiciones
+\begin{enumerate}
+	\item $K_n$ es un grupo abeliano;
+	\item $\partial_n \colon K_{n+1} \to K_n$ es morfismo de grupos abelianos; y
+	\item $\partial_n \partial_{n+1} = 0$\label{eq:partC}. 
+\end{enumerate}
+\end{definition}
+\begin{remark}
+La ecuación última es equivalente a decir que para toda $n\in \mathbb{Z}$ se cumple que
+\begin{align*}
+	\operatorname{im}(\partial_{n+1} ) \leq \ker(\partial_n).
+\end{align*}
+\end{remark}
+\begin{definition}
+Dado un complejo de cadenas $\mathcal{K}$ definimos la \deftext{Homología} de $\mathcal{K}$, en símbolos $H(\mathcal{K})$, como la familia de grupos abelianos $\{ H_n(\mathcal{K}}) \mid n \in \mathbb{Z} \}$, donde
+\begin{center}
+	$H_n(\mathcal{K})\ :=\ \ker(\partial_n) / \operatorname{im}(\partial_{n+1})$.
+\end{center} 
+Nos referimos a los elementos de $K_n$ como \deftext{$n$-cadenas}, a los de $\ker(\partial_n)$ como \deftext{$n$-cíclos} y a los de $\operatorname{im}(\partial_n)$ como \deftext{$n$-fronteras}. Cuando no exista confusión escribiremos la clase lateral $c + \operatorname{im}(\partial_{n+1}) \in H_n(\mathcal{K})$ como $[c]$. Además, si $c' \in [c]$, diremos que $c'$ y $c$ son \deftext{homólogos}.
+\end{definition}
+
+\begin{definition}[Morfismo de cadenas]
+Dados dos complejos de cadenas $\mathcal{K}$ y $\mathcal{K}'$ un \deftext{morfismo de cadenas} $f$, denotado por $f \colon \mathcal{K}\to\mathcal{K}'$ es una familia de morfismos $\{f_n \colon K_n \to K_n' \mid n\in \mathbb{Z}\}$ de tal manera que $\partial_{n+1}' f_{n+1} = f_n \partial_n$.
+\end{definition}
+
+\begin{proposition}
+\begin{enumerate}
+	\item El morfismo trivial de grupos\footnote{Aquí nos referimos al morfismo que manda todo elemento de un grupo al $0$ de otro.} abelianos induce de manera natural un morfismo de cadenas.
+	\item Existe $1_\mathcal{K}:\mathcal{K}\to \mathcal{K}$, con $1_{\mathcal{K}_n} = \text{Id}_{K_n}$ la identidad.
+	\item S $\mathcal{K}$, $\mathcal{J}$ y $\mathcal{L}$ son complejos de cadenas y $f\colon \mathcal{K}\to \mathcal{J}$ y $g \colon \mathcal{J}\to \mathcal{L}$ son morfismos de cadenas, entonces la familia de morfismos $\{ g_n \circ f_n \mid n\in \mathbb{Z} \}$ es el morfismo de cadenas $g\circ f \colon \mathcal{K}\to \mathcal{L}$.
+\end{enumerate}
+2 y 3 en suma nos dicen que existe la categoría de complejos de cadenas. 
+\end{proposition}
+\begin{proposition}
+Dados dos complejos de cadenas $\mathcal{K}$ y $\mathcal{L}$ y un morfismo de cadenas $f:\mathcal{K} \to \mathcal{L}$, se tiene que la familia de morfismos $A$, $\{H_n(f) : n\in \mathbb{Z} \}$ donde el morfismo $H_n(f):H_n(\mathcal{K})\ \to H_n(\mathcal{L})$ está dado por
+\begin{center}
+$H_n(f)(c + \operatorname{im}\partial_{n+1}) = f(c) + \operatorname{im}\partial_{n+1}$,
+\end{center}
+es un morfismo de grupos abelianos. 
+\end{proposition}
 
 \end{document}
