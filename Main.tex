@@ -48,6 +48,64 @@ Un \deftext{grupo}\footnote{Por convención, en este texto todos los grupos ser�
 Cuando no exista ambiguedad usaremos el símbolo $0$ sin mencionar a que grupo pertenece.
 \end{definition}
 
+\begin{definition}
+Sea $\{B_i\}_{i\in I}$ una familia de grupos. Un \emph{vector}
+\[
+(\ldots, b_i, \ldots)
+\]
+es una familia que asigna a cada índice $i \in I$ un elemento $b_i \in B_i$.
+También puede verse como una función
+\[
+f : I \longrightarrow \bigcup_{i\in I} B_i
+\]
+tal que
+\[
+f(i) = b_i \in B_i \quad \text{para cada } i\in I.
+\]
+
+La igualdad y la suma de vectores se definen \emph{coordenada a coordenada}:
+\[
+(b_i)_{i\in I} = (b_i')_{i\in I}
+\quad\Longleftrightarrow\quad
+b_i = b_i' \ \text{para todo } i\in I,
+\]
+\[
+(b_i)_{i\in I} + (b_i')_{i\in I}
+= (\,b_i + b_i'\,)_{i\in I}.
+\]
+
+El conjunto de todos estos vectores, con la operación descrita, forma un grupo que se denota por
+\[
+C = \prod_{i\in I} B_i,
+\]
+y se llama el \emph{producto directo} o \emph{producto cartesiano} de los grupos $B_i$.
+\end{definition}
+
+
+\begin{definition}
+Sean $\{B_i\}_{i \in I}$ grupos abelianos. Se llama \emph{suma directa} de los grupos $B_i$ al subgrupo del producto directo
+\[
+\bigoplus_{i \in I} B_i 
+= 
+\left\{
+(b_i)_{i \in I} \in \prod_{i \in I} B_i 
+\;\middle|\;
+b_i = 0 \text{ salvo para un número finito de índices } i
+\right\},
+\]
+donde la operación de grupo está dada componente a componente.
+
+A los homomorfismos de inclusión
+\[
+\rho_i : B_i \longrightarrow \bigoplus_{i \in I} B_i,
+\qquad
+b_i \longmapsto (\ldots,0,b_i,0,\ldots),
+\]
+se les llama \emph{inyecciones coordenadas}. 
+
+El grupo $\bigoplus_{i \in I} B_i$ se denomina también \emph{suma directa externa} de los $B_i$ y puede verse como el subgrupo del producto directo formado por los elementos con soporte finito.
+\end{definition}
+
 % ============================================================
 % Definiciones para issue #17: grupo abeliano libre, tensor y Tor
 % Basadas en Fuchs, Abelian Groups (Springer, 2015)
@@ -113,6 +171,29 @@ $\overline{g}(a \otimes c) = g(a,c)$. Esta propiedad caracteriza a
 $A \otimes C$ de manera única, salvo isomorfismos.
 \end{definition}
 
+\begin{definition}
+La parte de torsión de un grupo $A$ es
+\[
+t(A) := \{\, x \in A \mid nx = 0 \text{ para algún } n \in \mathbb{N} \,\}.
+\]
+Si $t(A)=A$, decimos que $A$ es de torsión.
+En este caso,
+\[
+A = \bigoplus_{p} A_p.
+\]
+\end{definition}
+
+\begin{theorem}[Teorema fundamental de los grupos finitamente generados]
+Todo grupo $G$ tal que existe  $X \in [G]^{<\omega}$\footnote{En general, si $A$ es un conjunto, entonces $[A]^{<\omega}$ representa la colección de todos los subconjuntos finitos de $A$. } con
+$\langle X \rangle = G$ es isomorfo a la suma directa de un grupo libre finitamente 
+generado y un número finito de grupos cíclicos de orden $p^{k}$, con $p$ primo 
+y $k \ge 1$. Esta descomposición es única salvo isomorfismos. En particular,
+\[
+G = F(G) \oplus t(G),
+\]
+donde $F(G)$ es la parte libre de $G$ y $t(G)$ es su parte de torsión.
+\end{theorem}
+
 \begin{definition}\label{def:tor}
 El \deftext{producto de torsión} de dos grupos abelianos $A$ y $C$, denotado por
 $\mathrm{Tor}(A,C)$, se define como el grupo abeliano libre generado por las tercias
@@ -123,12 +204,36 @@ sujetos a las relaciones
 (a, m, c_1 + c_2) &= (a, m, c_1) + (a, m, c_2),\\
 (a, mn, c) &= (na, m, c) = (a, m, nc).
 \end{align*}
-Con estas relaciones, el grupo $\mathrm{Tor}(A,C)$ es abeliano y satisface una
-\textit{simetría natural}:
+Con estas relaciones, el grupo $\operatorname{Tor}(A,C)$ es abeliano y satisface una
+\textit{simetría natural}
 \[
-\mathrm{Tor}(A,C) \cong \mathrm{Tor}(C,A).
+\operatorname{Tor}(A,C) \cong \operatorname{Tor}(C,A).
 \]
 \end{definition}
+
+\begin{proposition}
+Sea $\mathcal{G}$ una familia de grupos abelianos. Entonces,
+\[
+\left(\bigoplus_{G\in\mathcal{G}} G\right) \otimes C 
+\;\cong\;
+\bigoplus_{G\in\mathcal{G}} (G \otimes C).
+\]
+\end{proposition}
+
+
+\begin{proposition}
+Si $A$ y $C$ son finitos, entonces
+\[
+A \otimes C \;\cong\; \operatorname{Tor}(A, C),
+\]
+y ambos funtores son conmutativos; es decir,
+\[
+A \otimes C \cong C \otimes A 
+\quad\text{y}\quad 
+\operatorname{Tor}(A,C) \cong \operatorname{Tor}(C,A).
+\]
+\end{proposition}
+
 
 % ============================================================
 
