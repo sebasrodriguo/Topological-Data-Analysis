@@ -15,6 +15,7 @@
 \newtheorem{proposition}[thm]{Proposicion}
 \newtheorem{corollary}[thm]{Corollary}
 \newtheorem{remark}[thm]{Observación}
+\newtheorem{notation}[thm]{Notación}
 
 
 % Enumeración 
@@ -280,5 +281,87 @@ $H_n(f)(c + \operatorname{im}\partial_{n+1}) = f(c) + \operatorname{im}\partial_
 \end{center}
 es un morfismo de grupos abelianos. 
 \end{proposition}
+\section{Complejos Simpliciales}
+\begin{definition}
+Sea $C_0$ un conjunto finito. Un \deftext{Complejo Simplicial} sobre $C_0$ es una familia $\mathcal{C}\subseteq P(C_0)$ cerrada bajo subconjuntos, es decir que si $\sigma \in \mathcal{C}$ y $\tau \subseteq \sigma$, entonoces $\tau \in \mathcal{C}$.
 
+\end{definition}
+\begin{definition}
+Un complejo simplicial $C=P(C_0)$ se llama \deftext{Simplejo}. En este caso $C_0$ es la única faceta de $P(C_0)$. En este caso escribimos $\overline{C_0}$ en lugar de $C$.
+\end{definition}
+\begin{remark}
+El complejo simplicial generado por $F\subseteq P(V_0)$ es el mínimo complejo simplicial $K$ de manera que $F\subseteq K$. Una manera de hacer esto es $\bigcup F = \bigcup_{\sigma \in F} \overline{\sigma}$.
+\end{remark}
+\begin{notation}\label{not:ident}
+Si $a\in C_0$ y $C$ es un complejo simplicial sobre $C_0$, con $\{a\}\in C$, identificamos el símbolo $a$ con $\{a\}$. En general, pero no siempre, identificaremos la cadena de símbolos $a_1 a_2 \cdots a_n$ con el conjunto $\{a_1, a_2, \ldots, a_n\}$.
+\end{notation}
+
+\begin{definition}[n-esfera]
+Sea $\{a_n \mid n<\omega \}$ un conjunto de símbolos distintos por pares; definimos la \deftext{$0$-esfera} como $S_{\Delta}^0(a_0) := \{ \emptyset, (a_0,0), (a_0, 1)\}$ y para toda $n < \omega$ definimos la \deftext{$(n+1)$-esfera} como
+\[
+	S_{\Delta}^{n+1}(a_0, \ \ldots,\ a_{n+1}):=  S_{\Delta}^{n+1}(a_0, \ \ldots,\ a_{n})*S_{\Delta}^0(a_{n+1});
+\]
+donde $*$ es el ensamble de complejos simpliciales definido como sigue: Si $C$ y $D$ son complejos sin vértices en común, entonces el esnamble de $C$ con $D$ es el complejo
+\[
+C*D := \left\{\sigma \cup \tau \mid (\sigma, \tau) \in C\times D \right\}.
+\]
+\end{definition}
+
+\subsection*{Funciones Simpliciales}
+Para todo complejo simplicial $C$ denotamos con $C_0$ al conjunto de vértices de $C$. Sean $D$ y $C$ dos complejos simpliciales. 
+Una función $f\colon C_0 \to D_0$ es una \deftext{función simplicial} si para todo $\sigma \in C$ se cumple que $f[\sigma] \in D$.
+
+\begin{remark}
+Dada una función simplicial $f\colon C_0 \to D_0$, y recordando la convención hecha en \ref{not:ident} podemos pensar que $f$ está definida en todo $C$, de manera que siempre asumiremos que $f\colon C \to D$ para una función simplicial. En este caso $f(\sigma) := f[\sigma]$. 
+\end{remark}
+\subsection*{Realización Geométrica}
+\begin{definition}
+Un conjunto finito $\{x_i \mid i\leq m\}$ en $\mathbb{R}^n$ es \deftext{afinmente independiente} si siempre que 
+\[
+	\sum_{i\in J} t_i x_i = \sum_{i\in J} s_i x_i
+\]
+con $J\subseteq \{0,\ \ldots, \ m\}$ y $\sum_{i\in J} t_i = \sum_{i\in J} s_i = 1$ y $t_i , s_i \geq 0$ para toda $i \in J$, entonces $t_i = s_i$ para toda $i\in J$.\\
+\noident Dado un conjunto afinmente independiente $A$, una combinación afin de $A$ es un vector de la forma $\sum_{a\in A}S_A a$, con $\sum_{a\in A}S_A =1$ y $S_a \geq 0$.
+\end{definition}
+\begin{remark}
+$A\subseteq \mathbb{R}^n$ es afinmente independiente si y sólo si $A\setminus \{a\}-a$ es linealmenete independiente para algun $a\in A$.
+\end{remark}
+\begin{definition}
+Sea $A$ un conjunto afinmente independiente. La \deftext{cápsula convexa} de $A$ es el conjunto de todas las combinaciones afines de $A$.
+\end{definition}
+
+\begin{definition}
+Sea $V$ un conjunto finito, el \deftext{$V$-simplejo estandar} es la cápsula convexa de $V$ en $\mathbb{R}^n$.
+\end{definition}
+\begin{definition}
+Sea $C$ un complejo simplicial con vértices $C_0$. La \deftext{realización geométrica estandar} de $C$ es la unión de los $\sigma$-simplejos estandar en $\mathbb{R}^{C_0}$, con $\sigma \in C$, con la topología de subespacio.\\
+\noindent Todo espacio topológico isomorfo a la realización geométrica estandar de $C$ será llamado realización geométrica de $C$ y sin miramientos nos referiremos a cualquiera de ellos como $|C|$.
+\end{definition}
+\subsection*{Complejos Simpliciales Geométricos}
+Un $n$-simplejo geométrico es la cápsula convexa de un conjunto afinmente independiente de cardinalidad $n+1$. Una cara de un simplejo geométrico $\sigma$ generado por $A$ es un simplejo generado por un subconjunto de $A$.\\
+\noindent A cada $n$-simplejo geométrico generado por $A$ le asociamos el $n$-simplejo(abstracto) $P(A)$. Por otro lado, todo $n$-simplejo $\sigma$ tiene asociado un $n$-simplejo geométrico $|\sigma |$.\\
+\noindent Un complejo simplicial geométrico es un conjunto de simplejos geométricos, cerrado bajo curvas, tal que la intersección de cualesquiera dos de ellos tiene que ser una cara de ambos.\\
+
+Sean $C$ y $D$ dos complejos simpliciales y $f\colon C \to D$ una función simplicial. Consideremos las respectivas realizaciones geométricas $|C| \subseteq \mathbb{R}^{C_0}$ y $|D| \subseteq \mathbb{R}^{D_0}$. De este modo, todo elemento de $|C|$ es de la forma $\sum_{a\in \sigma} t_a a$ con $\sigma \in C$.
+De esta manera, podemos definir a la función $|f|\colon |C| \to |D|$ como
+\[
+	|f|(\sum_{a\in \sigma}t_a a) := \sum_{a\in \sigma}t_a f(a)
+\]
+para toda $\sigma$ y toda combinación lineal afin. 
+\begin{remark}
+$a\in \mathbb{R}^{C_0}$ es la función definida como 
+\[
+	a(x) := \begin{cases}
+	0 & a\neq x,\\
+	1 & a = x. 
+	\end{cases}
+\]
+\end{remark}
+
+Problema 1
+Calcular la homología de cualquier arbol, es decir de cualquier gráfica simple, conexa y acíclica 
+
+\begin{proof}
+Sobre inducción sobre el número de hojas 
+\end{proof}
 \end{document}
