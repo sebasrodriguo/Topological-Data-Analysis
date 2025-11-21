@@ -3,6 +3,7 @@
 \usepackage{amsmath}      % Para \numberwithin
 \usepackage{amsthm} 
 \usepackage{hyperref}
+\usepackage{graphicx}
 \usepackage{url}
 \theoremstyle{plain}
 \numberwithin{equation}{section} %change this to make globally numbered equations
@@ -280,5 +281,489 @@ $H_n(f)(c + \operatorname{im}\partial_{n+1}) = f(c) + \operatorname{im}\partial_
 \end{center}
 es un morfismo de grupos abelianos. 
 \end{proposition}
+
+
+% ============================================================
+
+\chapter{Ejercicios}
+
+\section*{Ejercicio 1}
+
+Calcular la homología de cualquier árbol, es decir, de cualquier gráfica simple conexa sin ciclos.
+
+
+\section*{Ejercicio 2}
+
+Calcula la homología del plano proyectivo.
+
+Tomamos la triangulación del plano proyectivo descrita por el complejo simplicial
+
+\[
+\begin{aligned}
+D = \{\,
+&\emptyset,\;
+v_1, v_2, v_3, v_4, v_5, v_6,\\[4pt]
+&v_1v_2,\; v_1v_3,\; v_1v_4,\; v_1v_5,\; v_1v_6,\;
+v_2v_3,\; v_2v_4,\; v_2v_5,\; v_2v_6,\;
+v_3v_4,\; v_3v_5,\; v_3v_6,\;
+v_4v_5,\; v_4v_6,\; v_5v_6,\\[4pt]
+&v_1v_2v_4,\; v_1v_2v_6,\; v_1v_4v_5,\; v_1v_5v_6,\; v_1v_6v_2,\;
+v_2v_3v_5,\; v_2v_5v_6,\; v_3v_4v_6,\; v_3v_6v_5,\; v_4v_5v_6
+\,\}.
+\end{aligned}
+\]
+
+\noindent
+Tomamos ahora las $\partial_n$ y los grupos de cadenas $C_n(D)$ como las definimos anteriormente.
+Para obtener el rango y los generadores de los grupos de homología del complejo simplicial $D$
+seguiremos el método matricial visto en clase.
+Primero representamos matricialmente los morfismos frontera.
+
+\bigskip
+
+% -------------------------------------------------------
+\subsection*{$\partial_0$}
+
+Como $\partial_0 : C_0(D) \to C_{-1}(D)$ está dada por $\partial_0(v) = \emptyset$, para $v \in C_0(D)$,
+
+\[
+\partial_0(v_1) = \partial_0(v_2) = \partial_0(v_3)
+= \partial_0(v_4) = \partial_0(v_5) = \partial_0(v_6) = \emptyset.
+\]
+
+Así, obtenemos la matriz $A$:
+
+\[
+A =
+\begin{pmatrix}
+1 & 1 & 1 & 1 & 1 & 1
+\end{pmatrix}.
+\]
+
+\bigskip
+
+% -------------------------------------------------------
+\subsection*{$\partial_1$}
+
+$\partial_1 : C_1(D) \to C_0(D)$ está dada por $\partial_1(vw) = w - v$, para $vw \in C_1(D)$.
+
+\[
+\begin{aligned}
+\partial_1(v_1v_2) &= v_2 - v_1, &
+\partial_1(v_1v_3) &= v_3 - v_1, &
+\partial_1(v_1v_4) &= v_4 - v_1,\\[2pt]
+\partial_1(v_1v_5) &= v_5 - v_1, &
+\partial_1(v_1v_6) &= v_6 - v_1, &
+\partial_1(v_2v_3) &= v_3 - v_2,\\[2pt]
+\partial_1(v_2v_5) &= v_5 - v_2, &
+\partial_1(v_2v_6) &= v_6 - v_2, &
+\partial_1(v_3v_4) &= v_4 - v_3,\\[2pt]
+\partial_1(v_3v_5) &= v_5 - v_3, &
+\partial_1(v_3v_6) &= v_6 - v_3, &
+\partial_1(v_4v_5) &= v_5 - v_4,\\[2pt]
+\partial_1(v_4v_6) &= v_6 - v_4, &
+\partial_1(v_5v_6) &= v_6 - v_5.
+\end{aligned}
+\]
+
+Obteniendo así la matriz $B$:
+
+\[
+B = \small
+\begin{pmatrix}
+-1 & -1 & -1 & -1 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+ 1 &  0 &  0 &  0 &  0 & -1 & -1 & -1 & -1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 &  1 &  0 &  0 &  0 &  1 &  0 &  0 & 0 & -1 & -1 & -1 & 0 & 0 & 0 \\
+ 0 &  0 &  1 &  0 &  0 &  0 &  1 &  0 &  0 &  1 & 0 & 0 & -1 & -1 & 0 \\
+ 0 &  0 &  0 &  1 &  0 &  0 &  0 &  1 &  0 &  0 &  1 & 0 & 1 & 0 & -1 \\
+ 0 &  0 &  0 &  0 &  1 &  0 &  0 &  0 &  1 &  0 &  0 & 1 & 0 & 1 & 1
+\end{pmatrix}.
+\]
+
+\normalsize
+
+\bigskip
+
+% -------------------------------------------------------
+\subsection*{$\partial_2$}
+
+$\partial_2 : C_2(D) \to C_1(D)$ está dada por 
+\[
+\partial_2(vwz) = wz - vz + vw.
+\]
+
+Escribimos explícitamente:
+
+\[
+\begin{aligned}
+\partial_2(v_1 v_2 v_4) &= v_2 v_4 - v_1 v_4 + v_1 v_2,\\
+\partial_2(v_1 v_2 v_6) &= v_2 v_6 - v_1 v_6 + v_1 v_2,\\
+\partial_2(v_1 v_3 v_4) &= v_3 v_4 - v_1 v_4 + v_1 v_3,\\
+\partial_2(v_1 v_3 v_5) &= v_3 v_5 - v_1 v_5 + v_1 v_3,\\
+\partial_2(v_1 v_5 v_6) &= v_5 v_6 - v_1 v_6 + v_1 v_5,\\
+\partial_2(v_2 v_3 v_5) &= v_3 v_5 - v_2 v_5 + v_2 v_3,\\
+\partial_2(v_2 v_3 v_6) &= v_3 v_6 - v_2 v_6 + v_2 v_3,\\
+\partial_2(v_2 v_4 v_5) &= v_4 v_5 - v_2 v_5 + v_2 v_4,\\
+\partial_2(v_3 v_4 v_6) &= v_4 v_6 - v_3 v_6 + v_3 v_4,\\
+\partial_2(v_3 v_5 v_6) &= v_5 v_6 - v_3 v_6 + v_3 v_5,\\
+\partial_2(v_4 v_5 v_6) &= v_5 v_6 - v_4 v_6 + v_4 v_5.
+\end{aligned}
+\]
+
+Obteniendo así la matriz $C$:
+
+\[
+C = \small
+\begin{pmatrix}
+ 1 &  1 &  0 &  0 &  0 &  0 &  0 &  0 &  0 &  0 \\
+ 0 &  0 &  1 &  1 &  0 &  0 &  0 &  0 &  0 &  0 \\
+-1 &  0 & -1 &  0 &  0 &  0 &  0 &  0 &  0 &  0 \\
+ 0 &  0 &  0 & -1 &  1 &  0 &  0 &  0 &  0 &  0 \\
+ 0 & -1 &  0 &  0 & -1 &  0 &  0 &  0 &  0 &  0 \\
+ 0 &  0 &  0 &  0 &  0 &  1 &  1 &  0 &  0 &  0 \\
+ 1 &  0 &  0 &  0 &  0 &  0 &  0 &  1 &  0 &  0 \\
+ 0 &  0 &  0 &  0 &  0 & -1 &  0 & -1 &  0 &  0 \\
+ 0 &  1 &  0 &  0 &  0 &  0 & -1 &  0 &  0 &  0 \\
+ 0 &  0 &  1 &  0 &  0 &  0 &  0 &  0 &  1 &  0 \\
+ 0 &  0 &  0 &  1 &  0 &  1 &  0 &  0 &  0 &  0 \\
+ 0 &  0 &  0 &  0 &  0 &  0 &  1 &  0 & -1 &  0 \\
+ 0 &  0 &  0 &  0 &  0 &  0 &  0 &  1 &  0 &  1 \\
+ 0 &  0 &  0 &  0 &  0 &  0 &  1 &  0 &  1 & -1 \\
+ 0 &  0 &  0 &  0 &  1 &  0 &  0 &  0 &  0 &  1
+\end{pmatrix}.
+\]
+\normalsize
+
+\bigskip
+
+% -------------------------------------------------------
+\subsection*{$\partial_n,\ n>2$}
+
+Por cómo están definidas las $\partial_n$, no es necesario realizar las representaciones
+matriciales para saber quiénes son $\ker(\partial_n)$ y $\operatorname{im}(\partial_n)$.
+
+\bigskip
+
+% -------------------------------------------------------
+\subsection*{Formas normales de Smith}
+
+Dada una matriz $M'$ en forma normal de Smith, las columnas cuyo pivote es $0$
+corresponden a una base del núcleo, y las columnas con pivote generan la imagen.
+
+A continuación presentamos explícitamente las matrices $A', Q_A, B', Q_B, C'$ y $Q_C$.
+
+\bigskip
+
+\paragraph{1. Matriz $A'$ y matriz de cambio de base $Q_A$}
+
+\[
+A' =
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & 0
+\end{pmatrix},
+\qquad
+Q_A =
+\begin{pmatrix}
+ 1 & -1 & -1 & -1 & -1 & -1 \\
+ 0 &  0 &  0 &  0 &  0 &  1 \\
+ 0 &  0 &  0 &  0 &  1 &  0 \\
+ 0 &  0 &  0 &  1 &  0 &  0 \\
+ 0 &  0 &  1 &  0 &  0 &  0 \\
+ 0 &  1 &  0 &  0 &  0 &  0
+\end{pmatrix}.
+\]
+
+\bigskip
+
+\paragraph{2. Matriz $B'$ y matriz $Q_B$}
+
+\[
+B' =
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+\end{pmatrix}.
+\]
+
+\[
+\small
+Q_B =
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 1 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & -1 \\
+0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & -1 & -1 & 0 \\
+0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & -1 & -1 & -1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & -1 & -1 & -1 & -1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+\end{pmatrix}.
+\normalsize
+\]
+
+\bigskip
+
+\paragraph{3. Matriz $C'$ y matriz $Q_C$}
+
+\[
+\footnotesize
+C' =
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 2 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+\end{pmatrix}
+\]
+
+\[
+Q_C =
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & -1 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & -1 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & -1 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & -1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & -1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & -1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & -1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1
+\end{pmatrix}.
+\]
+\normalsize
+
+\bigskip
+
+\subsection*{Interpretación}
+
+Dada una matriz $M'$ en su forma normal de Smith, las columnas con pivote $0$
+corresponden a generadores del kernel, y las columnas con pivote distinto de $0$
+corresponden a generadores de la imagen.
+
+\bigskip
+
+\subsection*{$\partial_0$}
+
+La base ordenada original es $(v_1,\dots,v_6)$.
+Al multiplicar por $Q_A$ obtenemos:
+
+\[
+(v_1,\dots,v_6)\, Q_A
+= (v_1,\, v_6 - v_1,\, v_5 - v_1,\, v_4 - v_1,\, v_3 - v_1,\, v_2 - v_1).
+\]
+
+Así obtenemos:
+
+\begin{itemize}
+\item $\operatorname{im}(\partial_0)=\langle\varphi\rangle$, de rango $1$;
+\item $\ker(\partial_0)=\langle v_6-v_1,\; v_5-v_1,\; v_4-v_1,\; v_3-v_1,\; v_2-v_1\rangle$, de rango $5$.
+\end{itemize}
+
+\bigskip
+
+\subsection*{$\partial_1$}
+
+\[
+(v_1,v_2,v_3,v_4,v_5,v_6,\, v_1v_2, v_2v_3, v_3v_4, v_4v_5, v_5v_6, v_1v_6, v_1v_3, v_1v_5, v_1v_2, v_3v_6, v_4v_5, v_1v_6, v_5v_6)\, Q_B
+\]
+
+\[
+\begin{aligned}
+=(&v_1v_2,\ v_2v_3,\ v_1v_4,\ v_1v_5,\ v_1v_5v_6,\ v_1v_5,\ v_1v_4,\ v_1v_5,\\
+&v_1v_4 - v_1v_5 + v_1v_5,\;
+v_1v_5 - v_1v_5 + v_1v_3,\;
+v_1v_2 - v_1v_2 + v_2v_3).
+\end{aligned}
+\]
+
+De donde obtenemos:
+
+\[
+\operatorname{im}(\partial_1)
+= \langle v_2 - v_1,\ v_3 - v_1,\ v_4 - v_1,\ v_5 - v_1,\ v_6 - v_1\rangle,
+\quad \text{de rango } 5.
+\]
+
+\[
+\ker(\partial_1)
+= \langle 
+v_1v_5 - v_1v_6 + v_5v_6,\ 
+v_1v_4 - v_1v_5 + v_4v_5,\ 
+v_1v_3 - v_1v_5 + v_3v_5,\ 
+v_1v_2 - v_1v_4 + v_2v_4,
+\]
+
+\[
+v_1v_2 - v_1v_5 + v_2v_5,\ 
+v_1v_2 - v_1v_3 + v_2v_3,\ 
+v_1v_3 - v_1v_6 + v_3v_6,\ 
+v_1v_2 - v_1v_6 + v_2v_6,\ 
+v_1v_2 - v_1v_3 + v_2v_3,
+\]
+
+\[
+v_1v_2 - v_1v_4 + v_2v_4,\ 
+v_1v_2 - v_1v_3 + v_2v_3
+\rangle,
+\qquad \text{de rango } 10.
+\]
+
+\subsection*{$\partial_2$}
+
+La nueva base ordenada es
+\[
+\tag{1}
+\begin{aligned}
+&(v_1v_2v_4,\; v_1v_2v_6,\; v_1v_3v_4,\; v_1v_3v_5,\; v_1v_5v_6,\;
+  v_2v_3v_5,\; v_2v_3v_6,\; v_2v_4v_5,\; v_3v_4v_6,\; v_3v_5v_6)\, Q_C
+\\[4pt]
+&=(v_1v_2v_4,\; v_1v_2v_6,\; v_1v_3v_4,\; v_1v_3v_5,\; v_1v_5v_6,\;
+     v_2v_3v_5,\; v_2v_3v_6,\; v_2v_4v_5,\; v_3v_4v_6,\; v_3v_5v_6)
+\\
+&\quad
+- (v_2v_4v_5,\; v_2v_5v_6,\; v_3v_4v_5,\; v_3v_5v_6,\; v_5v_6v_4,\;
+     v_3v_6v_5,\; v_3v_6v_5,\; v_4v_6v_5,\; v_4v_6v_5,\; v_4v_5v_6)
+\\
+&\quad
+- (v_1v_3v_5,\; v_1v_3v_5,\; v_1v_3v_5,\; v_1v_5v_6,\; v_1v_5v_6,\;
+     v_2v_5v_6,\; v_2v_5v_6,\; v_2v_4v_6,\; v_3v_6v_5,\; v_3v_6v_5)
+\\
+&\quad
++ (v_1v_2v_4,\; v_1v_2v_4,\; v_1v_3v_4,\; v_1v_4v_5,\; v_1v_4v_5,\;
+     v_2v_3v_4,\; v_2v_3v_4,\; v_2v_4v_5,\; v_4v_5v_6,\; v_4v_5v_6).
+\end{aligned}
+\]
+
+De donde obtenemos que
+\[
+\tag{2}
+\begin{aligned}
+\operatorname{im}(\partial_2)
+=\Big\langle\,
+&v_1v_2 - v_1v_4 + v_2v_4,\;
+ v_1v_2 - v_1v_6 + v_2v_6,\;
+ v_1v_3 - v_1v_4 + v_3v_4,\;
+ v_1v_3 - v_1v_5 + v_3v_5,\\
+&v_1v_5 - v_1v_6 + v_5v_6,\;
+ v_2v_3 - v_2v_5 + v_3v_5,\;
+ v_2v_3 - v_2v_6 + v_3v_6,\;
+ v_2v_4 - v_2v_5 + v_4v_5,\\
+&v_3v_4 - v_3v_6 + v_4v_6,\;
+ v_3v_5 - v_3v_6 + v_5v_6,\;
+ 2(-v_1v_2 - v_1v_3 + v_1v_4 + v_1v_6 \\
+&\qquad{} - v_2v_3 + v_2v_4 + v_2v_6 - v_3v_4 - v_3v_5 + v_4v_5 + v_4v_6 + v_5v_6)
+\Big\rangle.
+\end{aligned}
+\]
+
+También,
+\[
+\ker(\partial_2)=0.
+\]
+
+
+Además, por cómo están definidas las $\partial_n$, sabemos que
+\begin{itemize}
+    \item $\ker(\partial_0)=\langle \emptyset\rangle$,
+    \item $\ker(\partial_n)=0$, para $n>2$,
+    \item $\operatorname{im}(\partial_n)=0$, para $n>2$.
+\end{itemize}
+
+Por lo tanto, los grupos de homología son los siguientes:
+\begin{itemize}
+    \item $H_{-1}(D)=\langle \varphi\rangle / \langle \varphi\rangle = 0$,
+    \item $H_0(D)=\dfrac{\langle v_2-v_1,\, v_3-v_1,\, v_4-v_1,\, v_5-v_1,\, v_6-v_1 \rangle}
+    {\langle v_2-v_1,\, v_3-v_1,\, v_4-v_1,\, v_5-v_1,\, v_6-v_1 \rangle} = 0$,
+    \item $H_n(D)=0$, para $n\ge 2$.
+\end{itemize}
+
+Sin embargo, cuando $n=1$ no es tan trivial.
+
+Por definición,
+\[
+H_1(D)=\ker(\partial_1)/\operatorname{im}(\partial_2).
+\]
+
+Para simplificar notación, definamos:
+\begin{itemize}
+    \item $(a_1,a_2,a_3,a_4,a_5,a_6,a_7,a_8,a_9,a_{10})$ como el vector de los generadores de $\ker(\partial_1)$, en el orden en el que están escritos en la igualdad \textbf{(1)};
+    \item $(b_1,b_2,b_3,b_4,b_5,b_6,b_7,b_8,b_9,b_{10})$ como el vector de los generadores de $\operatorname{im}(\partial_2)$, en el orden en el que están escritos en la igualdad \textbf{(2)}.
+\end{itemize}
+
+De las definiciones anteriores podemos obtener las siguientes igualdades:
+\begin{align*}
+b_1 &= a_9,\\
+b_2 &= a_4,\\
+b_3 &= a_8,\\
+b_4 &= a_6,\\
+b_5 &= a_1,\\[4pt]
+b_6 &= a_6 - a_7 + a_{10},\\
+b_7 &= a_5 - a_4 + a_9,\\
+b_8 &= a_5 - a_7 + a_9,\\
+b_9 &= -a_1 - a_3 + a_8,\\
+2(-a_1 - a_3 + a_7 - a_8 - a_9 - a_{10}) &= b_{10}.
+\end{align*}
+
+Ahora, sabemos que $\operatorname{im}(\partial_2)$ es subgrupo de $\ker(\partial_1)$,
+y que ambos son de rango $10$.  
+Por lo tanto, $H_1(D)$ es finito.
+
+Ahora, ¿qué pasa si modificamos el generador de $\operatorname{im}(\partial_2)$?
+
+\medskip
+
+\textbf{Afirmación:}
+\[
+\langle a_1, a_2, \ldots, a_{10} \rangle
+=
+\left\langle b_1, b_2, \ldots, b_9,\; \frac{b_{10}}{2} \right\rangle
+=
+\langle b_1, b_2, \ldots, b_9, \tfrac{1}{2} b_{10} \rangle.
+\]
+
+Esto sucede porque eliminamos el factor $2$, y ya vimos que todos los $b_i$
+se pueden expresar como combinaciones de los $a_i$.
+
+\medskip
+
+Por lo tanto,
+\[
+\frac{\langle a_1, \ldots, a_{10} \rangle}{\langle b_1, \ldots, b_{10} \rangle}
+\;\cong\;
+\frac{\langle b_1, \ldots, b_9, \tfrac{1}{2} b_{10} \rangle}
+     {\langle b_1, \ldots, b_{10} \rangle}
+\;\cong\;
+\frac{\left\langle \tfrac{1}{2} b_{10} \right\rangle}{\langle b_{10} \rangle}
+\;\cong\;
+\mathbb{Z}/2.
+\]
+
+\section*{Ejercicio 3}
+
+Calcular la homología de la 2-esfera simplicial vista en clase.
+
 
 \end{document}
